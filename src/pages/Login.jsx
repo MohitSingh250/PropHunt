@@ -1,116 +1,94 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { supabase } from '../supabase';
 import { useNavigate } from 'react-router-dom';
 
-export default function Login() {
-  const [form, setForm] = useState({ email: '', password: '' });
+export function Login() {
   const [isLogin, setIsLogin] = useState(true);
-  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
-  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    // Check if user is already logged in
-    const getSession = async () => {
-      const { data } = await supabase.auth.getSession();
-      if (data.session) {
-        navigate('/dashboard');
-      }
-    };
-    getSession();
-  }, [navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    setMessage('');
     setLoading(true);
 
     try {
-      let result;
-      if (isLogin) {
-        result = await supabase.auth.signInWithPassword(form);
-      } else {
-        result = await supabase.auth.signUp({
-          email: form.email,
-          password: form.password,
-        });
-      }
+      const result = isLogin
+        ? await supabase.auth.signInWithPassword(form)
+        : await supabase.auth.signUp(form);
 
-      if (result.error) {
-        throw result.error;
-      }
+      if (result.error) throw result.error;
 
-      // Handle email confirmation flow
-      if (!isLogin && result.data.user && !result.data.session) {
-        setMessage('Check your email to confirm your account.');
-        setLoading(false);
-        return;
-      }
-
-      // Navigate if session is available
       if (result.data.session) {
         navigate('/dashboard');
-      } else {
-        setMessage('Signed up successfully. Check your email to confirm.');
       }
     } catch (err) {
-      setError(err.message);
+      setError(err.message || 'Something went wrong');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-      <form
-        onSubmit={handleSubmit}
-        className="w-full max-w-md bg-white p-8 shadow-md rounded-xl space-y-6"
-      >
-        <h2 className="text-2xl font-semibold text-center text-gray-800">
-          {isLogin ? 'Login' : 'Create an Account'}
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+      <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg">
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-2">
+          {isLogin ? 'Welcome Back' : 'Create an Account'}
         </h2>
+        <p className="text-center text-gray-500 mb-6">
+          {isLogin ? 'Log in to continue' : 'Sign up to get started'}
+        </p>
 
-        {error && <p className="text-red-600 text-sm text-center">{error}</p>}
-        {message && <p className="text-green-600 text-sm text-center">{message}</p>}
+        {error && <p className="text-red-600 text-sm text-center mb-4">{error}</p>}
 
-        <input
-          type="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
-          className="w-full px-4 py-2 border rounded-md"
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={form.password}
-          onChange={(e) => setForm({ ...form, password: e.target.value })}
-          className="w-full px-4 py-2 border rounded-md"
-          required
-        />
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div>
+            <label className="block mb-1 text-sm text-gray-600">Email</label>
+            <input
+              type="email"
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
+          <div>
+            <label className="block mb-1 text-sm text-gray-600">Password</label>
+            <input
+              type="password"
+              value={form.password}
+              onChange={(e) => setForm({ ...form, password: e.target.value })}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
 
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
-          disabled={loading}
-        >
-          {loading ? 'Processing...' : isLogin ? 'Login' : 'Sign Up'}
-        </button>
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-lg transition-all duration-200"
+          >
+            {loading ? 'Processing...' : isLogin ? 'Login' : 'Sign Up'}
+          </button>
+        </form>
 
-        <p className="text-center text-sm text-gray-600">
-          {isLogin ? 'Don’t have an account?' : 'Already have an account?'}{' '}
+        <div className="text-center mt-6">
+          <span className="text-sm text-gray-600">
+            {isLogin ? "Don't have an account?" : 'Already have an account?'}
+          </span>
           <button
             type="button"
-            className="text-blue-600 hover:underline"
+            className="ml-2 text-blue-600 hover:underline text-sm font-medium"
             onClick={() => setIsLogin(!isLogin)}
           >
             {isLogin ? 'Sign Up' : 'Login'}
           </button>
-        </p>
-      </form>
+        </div>
+      </div>
     </div>
   );
 }
+
+export default Login;
