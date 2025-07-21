@@ -1,11 +1,39 @@
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { supabase } from '../supabase';
+
 import { PropertyCard } from '../components/PropertyCard';
 import { AuctionCard } from '../components/AuctionCard';
 import { mockData } from '../data/mockData';
 import { Bookmark, Gavel, User, Bell, Settings } from 'lucide-react';
 
 export function Dashboard() {
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
   const savedProperties = mockData.properties.slice(0, 3);
   const activeAuctions = mockData.auctions.slice(0, 2);
+
+  useEffect(() => {
+    // Fetch logged-in user
+    const getUser = async () => {
+      const { data, error } = await supabase.auth.getUser();
+      if (error || !data.user) {
+        navigate('/login'); // redirect if no user
+      } else {
+        setUser(data.user);
+      }
+    };
+
+    getUser();
+  }, [navigate]);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    navigate('/login');
+  };
+
+  if (!user) return null; // or add a loading spinner
 
   return (
     <div style={{
@@ -43,7 +71,7 @@ export function Dashboard() {
                 <User style={{ height: '1.25rem', width: '1.25rem', color: '#3b82f6' }} />
               </div>
               <div>
-                <h3 style={{ fontWeight: '500' }}>John Doe</h3>
+                <h3 style={{ fontWeight: '500' }}>{user.email}</h3>
                 <p style={{ fontSize: '0.875rem', color: '#64748b' }}>Premium Member</p>
               </div>
             </div>
@@ -96,10 +124,21 @@ export function Dashboard() {
                 <Settings style={{ height: '1rem', width: '1rem' }} />
                 Settings
               </a>
+              <button onClick={handleLogout} style={{
+                marginTop: '1rem',
+                backgroundColor: '#ef4444',
+                color: '#fff',
+                padding: '0.5rem 0.75rem',
+                border: 'none',
+                borderRadius: '0.375rem',
+                cursor: 'pointer'
+              }}>
+                Logout
+              </button>
             </nav>
           </div>
 
-          {/* Main Content */}
+          {/* Main Content (same as your current layout) */}
           <div style={{ flex: 1 }}>
             <h1 style={{ fontSize: '1.875rem', fontWeight: 'bold', marginBottom: '1.5rem' }}>Dashboard</h1>
 
@@ -182,7 +221,6 @@ export function Dashboard() {
                 ))}
               </div>
             </div>
-
           </div>
         </div>
       </div>

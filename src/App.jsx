@@ -6,7 +6,10 @@ import { SearchPage } from './pages/SearchPage';
 import { PropertyPage } from './pages/PropertyPage';
 import { AuctionPage } from './pages/AuctionPage';
 import { Dashboard } from './pages/Dashboard';
-import  PropertyMain  from './pages/PropertyMain';
+import Login from './pages/Login';
+import PropertyMain from './pages/PropertyMain';
+import ProtectedRoute from './components/ProtectedRoute'; // 🆕
+
 export default function App() {
   return (
     <>
@@ -17,9 +20,16 @@ export default function App() {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/properties/:id" element={<PropertyPage />} />
           <Route path="/properties" element={<PropertyMain />} />
-
+          <Route path="/login" element={<Login />} />
           <Route path="/auctions" element={<AuctionPage />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </main>
       <Footer />
