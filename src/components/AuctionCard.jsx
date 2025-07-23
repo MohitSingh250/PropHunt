@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+*AuctionCard*- import { Link } from 'react-router-dom';
 import { AuctionTimer } from './AuctionTimer';
 import { Gavel, MapPin, Bed, Bath, Ruler } from 'lucide-react';
 
@@ -116,7 +116,11 @@ export function AuctionCard({ auction, property }) {
         padding: '1rem',
         borderTop: '1px solid #e2e8f0'
       }}>
-        <button style={{
+        <Link 
+        to={`/properties/${property.id}/bid`}>
+        <button
+        
+         style={{
           width: '100%',
           backgroundColor: '#3b82f6',
           color: '#f8fafc',
@@ -127,6 +131,8 @@ export function AuctionCard({ auction, property }) {
         }}>
           Place Bid
         </button>
+                </Link>
+
       </div>
     </div>
   );
