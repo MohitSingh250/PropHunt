@@ -100,8 +100,6 @@ export function PropertyFilter({ locations = [], categories = [] }) {
             ))}
           </select>
         </div>
-
-        {/* Category Filter */}
         <div>
           <label style={{
             display: 'block',
@@ -130,7 +128,6 @@ export function PropertyFilter({ locations = [], categories = [] }) {
           </select>
         </div>
 
-        {/* Price Range Filter */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
           <div>
             <label style={{

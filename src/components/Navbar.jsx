@@ -6,8 +6,6 @@ import { supabase } from '../supabase';
 export function Navbar() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
-
-  // Fetch auth user on mount
   useEffect(() => {
     const getUser = async () => {
       const { data } = await supabase.auth.getUser();
@@ -15,8 +13,6 @@ export function Navbar() {
     };
 
     getUser();
-
-    // Subscribe to auth changes (login/logout)
     const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
     });
@@ -28,7 +24,7 @@ export function Navbar() {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    navigate('/'); // Redirect to home after logout
+    navigate('/'); 
   };
 
   return (
@@ -69,8 +65,6 @@ export function Navbar() {
             </Link>
           )}
         </div>
-
-        {/* Login/Logout Button */}
         {user ? (
           <button className="btn-secondary" onClick={handleLogout}>
             <LogOut className="h-4 w-4 mr-2" />

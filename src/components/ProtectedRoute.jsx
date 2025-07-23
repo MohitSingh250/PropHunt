@@ -18,7 +18,7 @@ export default function ProtectedRoute({ children }) {
     checkUser();
   }, []);
 
-  if (checking) return null; // you can return a loader here if desired
+  if (checking) return null; 
 
   return user ? children : <Navigate to="/login" replace />;
 }

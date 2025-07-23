@@ -8,7 +8,6 @@ export function BidForm({ auction }) {
   const handleBid = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Submit logic here
   };
 
   return (
