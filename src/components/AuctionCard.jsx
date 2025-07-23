@@ -1,4 +1,4 @@
-*AuctionCard*- import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AuctionTimer } from './AuctionTimer';
 import { Gavel, MapPin, Bed, Bath, Ruler } from 'lucide-react';
 
