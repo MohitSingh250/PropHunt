@@ -83,7 +83,10 @@ export function PropertyCard({ property }) {
         padding: '1rem',
         borderTop: '1px solid #e2e8f0'
       }}>
-        <button style={{
+        <Link 
+        to={`/properties/${property.id}`}>
+        <button
+         style={{
           width: '100%',
           backgroundColor: '#3b82f6',
           color: '#f8fafc',
@@ -94,6 +97,8 @@ export function PropertyCard({ property }) {
         }}>
           View Details
         </button>
+              </Link>
+
       </div>
     </div>
   );
