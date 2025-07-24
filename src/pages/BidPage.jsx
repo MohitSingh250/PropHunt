@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { MockData } from '../data/MockData.js';
+import { MockData } from '../data/mockdata';
 import { ArrowLeft, Gavel, Clock, User, TrendingUp, CheckCircle, AlertTriangle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
