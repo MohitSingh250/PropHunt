@@ -14,49 +14,92 @@ export function HomePage() {
     <div className="bg-white">
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3270&q=80')] bg-cover bg-center">
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/70 to-transparent"></div>
-        </div>
-        
-        <div className="container relative z-10 px-4 text-center">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl font-bold text-gray-900 mb-6"
-          >
-            Discover <span className="text-blue-600">Exceptional</span> Properties
-          </motion.h1>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto"
-          >
-            Premium real estate auctions featuring luxury homes, commercial properties, and unique investments
-          </motion.p>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="max-w-md mx-auto"
-          >
-            <SearchBar />
-          </motion.div>
-        </div>
+  <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3270&q=80')] bg-cover bg-center bg-fixed">
+    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-gray-900/30"></div>
+  </div>
+  
+  <div className="container relative z-10 px-4 text-center">
+    <motion.h1 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+    >
+      Discover <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Exceptional</span> Properties
+    </motion.h1>
+    
+    <motion.p 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.1 }}
+      className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto font-light"
+    >
+      Premium real estate auctions featuring luxury homes, commercial properties, and unique investment opportunities worldwide
+    </motion.p>
+    
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2 }}
+      className="max-w-2xl mx-auto"
+    >
+      <SearchBar />
+    </motion.div>
 
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"
-        >
-          <div className="h-8 w-5 rounded-full border-2 border-gray-900 flex justify-center">
-            <div className="h-1 w-1 bg-gray-900 rounded-full mt-1"></div>
-          </div>
-        </motion.div>
-      </section>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.3 }}
+      className="flex justify-center gap-4 mt-12"
+    >
+      <button className="px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white font-medium rounded-lg hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300 hover:-translate-y-1">
+        View Auctions
+      </button>
+      
+    </motion.div>
+  </div>
+
+  <motion.div 
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: 1 }}
+    className="absolute bottom-8 left-1/2 -translate-x-1/2"
+  >
+    <div className="flex flex-col items-center">
+      <span className="text-sm text-gray-300 mb-2">Scroll Down</span>
+      <div className="h-10 w-6 rounded-3xl border-2 border-blue-400 flex justify-center relative">
+        <motion.div
+          animate={{
+            y: [0, 12, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            repeatType: "loop",
+          }}
+          className="h-2 w-1 bg-blue-400 rounded-full absolute top-2"
+        ></motion.div>
+      </div>
+    </div>
+  </motion.div>
+
+  {/* Floating stats */}
+  <div className="absolute bottom-10 right-10 hidden lg:block">
+    <div className="grid grid-cols-3 gap-4 text-white">
+      <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg text-center border border-white/10">
+        <div className="text-2xl font-bold text-blue-400">10K+</div>
+        <div className="text-xs uppercase tracking-wider">Properties</div>
+      </div>
+      <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg text-center border border-white/10">
+        <div className="text-2xl font-bold text-blue-400">95%</div>
+        <div className="text-xs uppercase tracking-wider">Success Rate</div>
+      </div>
+      <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg text-center border border-white/10">
+        <div className="text-2xl font-bold text-blue-400">$5B+</div>
+        <div className="text-xs uppercase tracking-wider">Transactions</div>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Featured Properties */}
       <section className="py-16">
