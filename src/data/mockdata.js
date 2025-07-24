@@ -1007,7 +1007,7 @@ export const MockData = {
       express: 7
     },
     reservePricePercentage: 0.9, // 90% of listing price
-    bidderDeposit: 0.05 // 5% of current bid
+    bidderDeposit: 0.05 
   },
   
   systemStats: {
@@ -1021,4 +1021,3 @@ export const MockData = {
   }
 };
 
-export default MockData;
