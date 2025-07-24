@@ -1,6 +1,6 @@
 import { PropertyCard } from '../components/PropertyCard';
 import { AuctionCard } from '../components/AuctionCard';
-import { MockData } from '../data/MockData';
+import { MockData } from '../data/MockData.js';
 import { Bookmark, Gavel, User, Bell, Settings, Home, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 

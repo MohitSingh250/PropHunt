@@ -1,5 +1,5 @@
 import { PropertyCard } from '../components/PropertyCard';
-import { MockData } from '../data/MockData';
+import { MockData } from '../data/MockData.js';
 import { motion } from 'framer-motion';
 import { Home } from 'lucide-react';
 

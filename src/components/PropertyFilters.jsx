@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { SlidersHorizontal } from 'lucide-react';
-import { MockData } from '../data/MockData';
+import { MockData } from '../data/MockData.js';
 
 export function PropertyFilter() {
   const navigate = useNavigate();
