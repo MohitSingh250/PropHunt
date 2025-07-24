@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { mockData } from '../data/mockData';
+import { MockData } from '../data/MockData';
 import { MapPin, Bed, Bath, Ruler, Calendar, Phone, Mail, ArrowLeft, Gavel, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -38,7 +38,7 @@ function ErrorFallback({ error, resetErrorBoundary }) {
 export function PropertyPage() {
   const { id } = useParams();
   
-  const property = mockData.properties.find((p) => p.id === id) || {
+  const property = MockData.properties.find((p) => p.id === id) || {
     title: 'Unknown Property',
     location: 'Location not specified',
     images: [],
@@ -52,7 +52,7 @@ export function PropertyPage() {
     }
   };
 
-  const auction = mockData.auctions.find((a) => a.propertyId === id) || null;
+  const auction = MockData.auctions.find((a) => a.propertyId === id) || null;
 
   return (
     <ErrorBoundary

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { PropertyFilter } from '../components/PropertyFilters';
 import { PropertyGrid } from '../components/PropertyGrid';
-import { mockData } from '../data/mockData';
+import { MockData } from '../data/MockData';
 import { Search } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -33,7 +33,7 @@ export function SearchPage() {
       bedrooms
     });
 
-    const results = mockData.properties.filter(property => {
+    const results = MockData.properties.filter(property => {
       const matchesSearch = query 
         ? property.title.toLowerCase().includes(query.toLowerCase()) || 
           property.location.toLowerCase().includes(query.toLowerCase()) ||

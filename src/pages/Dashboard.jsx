@@ -1,12 +1,12 @@
 import { PropertyCard } from '../components/PropertyCard';
 import { AuctionCard } from '../components/AuctionCard';
-import { mockData } from '../data/mockData';
+import { MockData } from '../data/MockData';
 import { Bookmark, Gavel, User, Bell, Settings, Home, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export function Dashboard() {
-  const savedProperties = mockData.properties.slice(0, 3);
-  const activeAuctions = mockData.auctions.slice(0, 2);
+  const savedProperties = MockData.properties.slice(0, 3);
+  const activeAuctions = MockData.auctions.slice(0, 2);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -115,7 +115,7 @@ export function Dashboard() {
                   >
                     <AuctionCard
                       auction={auction}
-                      property={mockData.properties.find((p) => p.id === auction.propertyId)}
+                      property={MockData.properties.find((p) => p.id === auction.propertyId)}
                     />
                   </motion.div>
                 ))}

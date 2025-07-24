@@ -1,9 +1,9 @@
 import { FeaturedProperties } from '../components/FeaturedProperties';
-import { mockData } from '../data/mockData.js';
+import { MockData } from '../data/MockData.js';
 import { motion } from 'framer-motion';
 
 const PropertyMain = () => {
-  const Properties = mockData.properties;
+  const Properties = MockData.properties;
 
   return (
     <section className="py-16 bg-gray-50">

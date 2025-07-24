@@ -1,5 +1,5 @@
 import { AuctionCard } from './AuctionCard';
-import { mockData } from '../data/mockData';
+import { MockData } from '../data/MockData';
 import { Gavel } from 'lucide-react';
 
 export function LiveAuctions() {
@@ -47,8 +47,8 @@ export function LiveAuctions() {
           gap: '1.5rem',
           gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))'
         }}>
-          {mockData.auctions.map((auction) => {
-            const property = mockData.properties.find((p) => p.id === auction.propertyId);
+          {MockData.auctions.map((auction) => {
+            const property = MockData.properties.find((p) => p.id === auction.propertyId);
             return property && (
               <AuctionCard 
                 key={auction.id} 

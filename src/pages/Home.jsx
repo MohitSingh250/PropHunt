@@ -2,13 +2,13 @@ import { SearchBar } from '../components/SearchBar';
 import { FeaturedProperties } from '../components/FeaturedProperties';
 import { LiveAuctions } from '../components/LiveAuction';
 import { ArrowRight, Home, Gavel } from 'lucide-react';
-import { mockData } from '../data/mockData';
+import { MockData } from '../data/MockData';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 export function HomePage() {
-  const featuredProperties = mockData.properties.slice(0, 6);
-  const liveAuctions = mockData.auctions.slice(0, 4);
+  const featuredProperties = MockData.properties.slice(0, 6);
+  const liveAuctions = MockData.auctions.slice(0, 4);
 
   return (
     <div className="bg-white">

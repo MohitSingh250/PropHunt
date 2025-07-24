@@ -1,4 +1,4 @@
-export const mockData = {
+export const MockData = {
   properties: [
     {
       id: 'prop_101',
@@ -1021,4 +1021,4 @@ export const mockData = {
   }
 };
 
-export default mockData;
+export default MockData;

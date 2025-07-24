@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { mockData } from '../data/mockData';
+import { MockData } from '../data/MockData';
 import { ArrowLeft, Gavel, Clock, User, TrendingUp, CheckCircle, AlertTriangle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -28,8 +28,8 @@ export function BidPage() {
   const [bidSuccess, setBidSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const auction = mockData.auctions.find(a => a.propertyId === id);
-  const property = mockData.properties.find(p => p.id === id);
+  const auction = MockData.auctions.find(a => a.propertyId === id);
+  const property = MockData.properties.find(p => p.id === id);
 
   const handlePlaceBid = (e) => {
     e.preventDefault();
