@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { mockData } from './data/mockData';
+import { mockData } from '../data/mockData';
 import { MapPin, Bed, Bath, Ruler, Calendar, Phone, Mail, ArrowLeft, Gavel, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';

@@ -2,7 +2,7 @@ import { SearchBar } from '../components/SearchBar';
 import { FeaturedProperties } from '../components/FeaturedProperties';
 import { LiveAuctions } from '../components/LiveAuction';
 import { ArrowRight, Home, Gavel } from 'lucide-react';
-import { mockData } from './data/mockData';
+import { mockData } from '../data/mockData';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
