@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { PropertyFilter } from '../components/PropertyFilters';
 import { PropertyGrid } from '../components/PropertyGrid';
-import { mockData } from '../data/mockData';
+import { mockData } from './data/mockData';
 import { Search } from 'lucide-react';
 import { motion } from 'framer-motion';
 

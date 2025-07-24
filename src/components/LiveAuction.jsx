@@ -1,5 +1,5 @@
 import { AuctionCard } from './AuctionCard';
-import { mockData } from '../data/mockData';
+import { mockData } from './data/mockData';
 import { Gavel } from 'lucide-react';
 
 export function LiveAuctions() {

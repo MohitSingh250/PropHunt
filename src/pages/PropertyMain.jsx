@@ -1,5 +1,5 @@
 import { FeaturedProperties } from '../components/FeaturedProperties';
-import { mockData } from '../data/mockData';
+import { mockData } from './data/mockData';
 import { motion } from 'framer-motion';
 
 const PropertyMain = () => {
