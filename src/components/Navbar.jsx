@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Home, Search as SearchIcon, Gavel, User, LogIn } from 'lucide-react';
+import { Home, Search as SearchIcon, Gavel, User, LogIn, Building2 } from 'lucide-react';
 
 export function Navbar() {
   return (
@@ -18,7 +18,19 @@ export function Navbar() {
               PropHunt
             </span>
           </Link>
+
           <div className="hidden md:flex items-center space-x-10">
+            <Link
+              to="/properties"
+              className="nav-link relative group"
+            >
+              <div className="flex items-center gap-2">
+                <Building2 className="h-5 w-5 text-gray-500 group-hover:text-primary-500 transition-all" />
+                <span className="text-gray-600 group-hover:text-gray-900 font-medium">Properties</span>
+              </div>
+              <div className="absolute bottom-0 left-0 h-0.5 bg-primary-500 w-0 group-hover:w-full transition-all duration-300 origin-left" />
+            </Link>
+            
             <Link
               to="/search"
               className="nav-link relative group"
@@ -52,6 +64,7 @@ export function Navbar() {
               <div className="absolute bottom-0 left-0 h-0.5 bg-primary-500 w-0 group-hover:w-full transition-all duration-300 origin-left" />
             </Link>
           </div>
+
           <Link
             to="/login"
             className="relative inline-flex items-center px-5 py-2.5 overflow-hidden text-sm font-medium text-white rounded-lg group bg-gradient-to-br from-primary-500 to-blue-500 hover:from-primary-600 hover:to-blue-600 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
