@@ -3,43 +3,18 @@ import { Home } from 'lucide-react';
 
 export function FeaturedProperties({ properties }) {
   return (
-    <div style={{
-      padding: '4rem 0'
-    }}>
-      <div style={{
-        textAlign: 'center',
-        marginBottom: '3rem'
-      }}>
-        <div style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          borderRadius: '9999px',
-          backgroundColor: 'rgba(59, 130, 246, 0.1)',
-          padding: '0.75rem',
-          marginBottom: '1rem'
-        }}>
-          <Home style={{ height: '1.5rem', width: '1.5rem', color: '#3b82f6' }} />
+    <div className="py-16">
+      <div className="text-center mb-12">
+        <div className="inline-flex items-center justify-center rounded-full bg-blue-50 p-3 mb-4">
+          <Home className="h-6 w-6 text-blue-600" />
         </div>
-        <h2 style={{
-          fontSize: '1.875rem',
-          fontWeight: 'bold',
-          marginBottom: '0.75rem'
-        }}>Featured Properties</h2>
-        <p style={{
-          color: '#64748b',
-          maxWidth: '42rem',
-          margin: '0 auto'
-        }}>
+        <h2 className="text-3xl font-bold text-slate-800 mb-3">Featured Properties</h2>
+        <p className="text-slate-500 max-w-2xl mx-auto">
           Hand-selected premium properties currently available
         </p>
       </div>
       
-      <div style={{
-        display: 'grid',
-        gap: '1.5rem',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))'
-      }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {properties.map((property) => (
           <PropertyCard key={property.id} property={property} />
         ))}

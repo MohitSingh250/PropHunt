@@ -6,11 +6,14 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const safeFormat = (value, isCurrency = false) => {
-  if (value === undefined || value === null) return 'N/A';
-  if (typeof value !== 'number') return 'N/A';
+  if (value === undefined || value === null || value === '') return 'N/A';
+  
+  const num = typeof value === 'string' ? parseFloat(value) : value;
+  
+  if (isNaN(num)) return 'N/A';
   
   try {
-    const formatted = value.toLocaleString();
+    const formatted = num.toLocaleString();
     return isCurrency ? `$${formatted}` : formatted;
   } catch {
     return 'N/A';
@@ -189,11 +192,15 @@ export function BidPage() {
               <h3 className="text-lg font-semibold text-gray-900 mb-6">Place Your Bid</h3>
               
               {bidSuccess && (
-                <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center">
-                  <CheckCircle className="h-5 w-5 text-green-600 mr-2" />
-                  <span className="text-green-800">Your bid of {safeFormat(parseFloat(bidAmount), true)} has been placed successfully!</span>
-                </div>
-              )}
+  <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center">
+    <CheckCircle className="h-5 w-5 text-green-600 mr-2" />
+    <span className="text-green-800">
+      {bidAmount 
+        ? `Your bid of ${safeFormat(bidAmount, true)} has been placed successfully!`
+        : 'Your bid has been placed successfully!'}
+    </span>
+  </div>
+)}
               
               <form onSubmit={handlePlaceBid} className="space-y-6">
                 <div>

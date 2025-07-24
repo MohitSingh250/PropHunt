@@ -15,30 +15,9 @@ export function SearchBar() {
   };
 
   return (
-    <form 
-      onSubmit={handleSearch}
-      style={{
-        position: 'relative',
-        width: '100%',
-        maxWidth: '32rem',
-        margin: '0 auto',
-        transition: 'all 0.2s ease',
-        ...(isFocused ? {
-          boxShadow: '0 0 0 2px #3b82f6',
-          borderRadius: '0.5rem'
-        } : {})
-      }}
-    >
-      <div style={{ position: 'relative' }}>
-        <SearchIcon style={{
-          position: 'absolute',
-          left: '0.75rem',
-          top: '50%',
-          transform: 'translateY(-50%)',
-          height: '1rem',
-          width: '1rem',
-          color: '#64748b'
-        }} />
+    <form onSubmit={handleSearch} className={`w-full max-w-2xl mx-auto transition-all ${isFocused ? 'ring-2 ring-blue-500 rounded-lg' : ''}`}>
+      <div className="relative">
+        <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
         <input
           type="text"
           placeholder="Search properties by location, features or keywords..."
@@ -46,37 +25,11 @@ export function SearchBar() {
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          style={{
-            width: '100%',
-            paddingLeft: '2.5rem',
-            paddingRight: '5rem',
-            paddingTop: '0.75rem',
-            paddingBottom: '0.75rem',
-            borderRadius: '0.5rem',
-            border: '1px solid #e2e8f0',
-            backgroundColor: '#f8fafc',
-            fontSize: '0.875rem',
-            boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-            outline: 'none'
-          }}
+          className="w-full pl-10 pr-24 py-3 rounded-lg border border-slate-200 bg-slate-50 text-sm focus:outline-none shadow-sm"
         />
         <button
           type="submit"
-          style={{
-            position: 'absolute',
-            right: '0.5rem',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            backgroundColor: '#3b82f6',
-            color: '#ffffff',
-            borderRadius: '0.375rem',
-            padding: '0.25rem 0.75rem',
-            fontSize: '0.875rem',
-            fontWeight: '500',
-            transition: 'background-color 0.2s ease',
-            border: 'none',
-            cursor: 'pointer'
-          }}
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-blue-500 text-white rounded-md px-4 py-1.5 text-sm font-medium hover:bg-blue-600 transition-colors"
         >
           Search
         </button>
