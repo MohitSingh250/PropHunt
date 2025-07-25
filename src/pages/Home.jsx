@@ -51,9 +51,13 @@ export function HomePage() {
       transition={{ delay: 0.3 }}
       className="flex justify-center gap-4 mt-12"
     >
-      <button className="px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white font-medium rounded-lg hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300 hover:-translate-y-1">
-        View Auctions
-      </button>
+    <Link
+      to="/auctions"
+      className="px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white font-medium rounded-lg hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300 hover:-translate-y-1"
+    >
+      View Auctions
+    </Link>
+
       
     </motion.div>
   </div>

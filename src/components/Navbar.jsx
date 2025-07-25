@@ -46,6 +46,7 @@ export function Navbar() {
     <nav className="sticky top-0 z-50 bg-gray-900/80 backdrop-blur-md border-b border-gray-700/50">
       <div className="max-w-7l mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14">
+          {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
             <div className="p-2 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg transform group-hover:rotate-6 transition-all duration-300">
               <Home className="h-5 w-5 text-white" />
@@ -55,13 +56,14 @@ export function Navbar() {
             </span>
           </Link>
 
-          {/* Navigation Links */}
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <NavItem to="/properties" icon={<Building2 />} label="Properties" />
             <NavItem to="/search" icon={<SearchIcon />} label="Search" />
             <NavItem to="/auctions" icon={<Gavel />} label="Auctions" />
           </div>
 
+          {/* User Menu / Login */}
           <div className="relative" ref={dropdownRef}>
             {user ? (
               <>
@@ -72,6 +74,7 @@ export function Navbar() {
                   <User className="h-5 w-5" />
                   <ChevronDown className="h-4 w-4" />
                 </button>
+
                 {dropdownOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg ring-1 ring-gray-200 z-50">
                     <Link
@@ -82,6 +85,35 @@ export function Navbar() {
                       <User className="h-4 w-4 mr-2" />
                       Dashboard
                     </Link>
+
+                    {/* Mobile-only nav links */}
+                    <div className="md:hidden border-t border-gray-200">
+                      <Link
+                        to="/properties"
+                        onClick={() => setDropdownOpen(false)}
+                        className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        <Building2 className="h-4 w-4 mr-2" />
+                        Properties
+                      </Link>
+                      <Link
+                        to="/search"
+                        onClick={() => setDropdownOpen(false)}
+                        className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        <SearchIcon className="h-4 w-4 mr-2" />
+                        Search
+                      </Link>
+                      <Link
+                        to="/auctions"
+                        onClick={() => setDropdownOpen(false)}
+                        className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        <Gavel className="h-4 w-4 mr-2" />
+                        Auctions
+                      </Link>
+                    </div>
+
                     <button
                       onClick={handleLogout}
                       className="flex w-full items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50"
